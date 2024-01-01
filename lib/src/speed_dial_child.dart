@@ -45,6 +45,8 @@ class SpeedDialChild {
   /// Whether this `SpeedDialChild` is visible or not
   final bool visible;
 
+  final bool closeOnTap;
+
   SpeedDialChild({
     this.key,
     this.label,
@@ -60,5 +62,6 @@ class SpeedDialChild {
     this.onTap,
     this.onLongPress,
     this.shape,
+    this.closeOnTap = true,
   });
 }

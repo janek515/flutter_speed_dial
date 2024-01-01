@@ -10,7 +10,7 @@ class BackgroundOverlay extends AnimatedWidget {
   final LayerLink layerLink;
   final ShapeBorder shape;
   final VoidCallback? onTap;
-  final bool closeManually;
+  final bool closeOnBarrierTap;
   final String? tooltip;
 
   const BackgroundOverlay({
@@ -20,7 +20,7 @@ class BackgroundOverlay extends AnimatedWidget {
     required Animation<double> animation,
     required this.dialKey,
     required this.layerLink,
-    required this.closeManually,
+    required this.closeOnBarrierTap,
     required this.tooltip,
     this.color = Colors.white,
     this.opacity = 0.7,
@@ -36,7 +36,7 @@ class BackgroundOverlay extends AnimatedWidget {
           fit: StackFit.expand,
           children: [
             GestureDetector(
-              onTap: onTap,
+              onTap: closeOnBarrierTap ? onTap : null,
               child: Container(
                 decoration: BoxDecoration(
                     color: color, backgroundBlendMode: BlendMode.dstOut),

@@ -118,8 +118,7 @@ class SpeedDial extends StatefulWidget {
   /// Executed when the dial is pressed. If given, the dial only opens on long press!
   final VoidCallback? onPress;
 
-  /// If true tapping on speed dial's children will not close the dial anymore.
-  final bool closeManually;
+  final bool closeOnBarrierTap;
 
   /// If true overlay is rendered.
   final bool renderOverlay;
@@ -204,7 +203,7 @@ class SpeedDial extends StatefulWidget {
     this.onOpen,
     this.onClose,
     this.direction = SpeedDialDirection.up,
-    this.closeManually = false,
+    this.closeOnBarrierTap = true,
     this.renderOverlay = true,
     this.shape = const StadiumBorder(),
     this.curve = Curves.fastOutSlowIn,
@@ -340,7 +339,7 @@ class _SpeedDialState extends State<SpeedDial>
             return BackgroundOverlay(
               dialKey: dialKey,
               layerLink: _layerLink,
-              closeManually: widget.closeManually,
+              closeOnBarrierTap: widget.closeOnBarrierTap,
               tooltip: widget.tooltip,
               shape: widget.shape,
               onTap: _toggleChildren,
@@ -565,7 +564,7 @@ class _ChildrensOverlay extends StatelessWidget {
             onTap: child.onTap,
             onLongPress: child.onLongPress,
             toggleChildren: () {
-              if (!widget.closeManually) toggleChildren();
+              if (child.closeOnTap) toggleChildren();
             },
             shape: child.shape,
             heroTag: widget.heroTag != null
