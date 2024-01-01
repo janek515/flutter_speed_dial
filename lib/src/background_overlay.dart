@@ -36,7 +36,7 @@ class BackgroundOverlay extends AnimatedWidget {
           fit: StackFit.expand,
           children: [
             GestureDetector(
-              onTap: closeManually ? null : onTap,
+              onTap: onTap,
               child: Container(
                 decoration: BoxDecoration(
                     color: color, backgroundBlendMode: BlendMode.dstOut),
