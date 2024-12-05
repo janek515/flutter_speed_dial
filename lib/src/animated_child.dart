@@ -75,7 +75,7 @@ class AnimatedChild extends AnimatedWidget {
 
       if (labelWidget != null) {
         return GestureDetector(
-          onTap: performAction,
+          onTap: onTap == null ? null : performAction,
           onLongPress: onLongPress == null ? null : () => performAction(true),
           child: labelWidget,
         );
@@ -105,7 +105,7 @@ class AnimatedChild extends AnimatedWidget {
             borderRadius: borderRadius,
             clipBehavior: Clip.hardEdge,
             child: InkWell(
-              onTap: performAction,
+              onTap: onTap == null ? null : performAction,
               onLongPress:
                   onLongPress == null ? null : () => performAction(true),
               child: Padding(
@@ -126,7 +126,7 @@ class AnimatedChild extends AnimatedWidget {
         child: FloatingActionButton(
           key: btnKey,
           heroTag: heroTag,
-          onPressed: performAction,
+          onPressed: onTap == null ? null : performAction,
           backgroundColor:
               backgroundColor ?? (dark ? Colors.grey[800] : Colors.grey[50]),
           foregroundColor:
